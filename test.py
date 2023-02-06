@@ -13,7 +13,7 @@ class Employee():
 
     def print_hi():
         # xlsx = xlrd2.open_workbook('D:/合约商机线上数据-给到振坤.xlsx')
-        xlsx = xlrd2.open_workbook('D:/结果202211282.xlsx')
+        xlsx = xlrd2.open_workbook('D:/医疗机构名称 - 副本.xlsx')
         # 通过sheet名查找：xlsx.sheet_by_name("sheet1")
         # 通过索引查找：xlsx.sheet_by_index(3)
         table = xlsx.sheet_by_index(0)
@@ -52,7 +52,8 @@ class Employee():
                         list1.append(emp1)
                     else:
                         a = df.to_dict('dict')
-                        emp1 = Employee(i, list(a.get("省").values()), list(a.get("市").values()), list(a.get("区").values()))
+                        emp1 = Employee(i, list(a.get("省").values()), list(a.get("市").values()),
+                                        list(a.get("区").values()))
                         list1.append(emp1)
                 else:
                     emp1 = Employee(i, list(a.get("省").values()), list(a.get("市").values()),
@@ -75,7 +76,12 @@ class Employee():
             outws.cell(i + 2, 2).value = str(list1[i].sheng[0])  # 第2列
             outws.cell(i + 2, 3).value = str(list1[i].shi[0])  # 第3列
             outws.cell(i + 2, 4).value = str(list1[i].xian[0])  # 第4列
-        outwb.save('结果202211282.xlsx20221128.xlsx')
+            # 上面是只取第一个 下面是全部
+            # outws.cell(i + 2, 1).value = list1[i].content  # 第1列
+            # outws.cell(i + 2, 2).value = str(list1[i].sheng)  # 第2列
+            # outws.cell(i + 2, 3).value = str(list1[i].shi)  # 第3列
+            # outws.cell(i + 2, 4).value = str(list1[i].xian)  # 第4列
+        outwb.save('结果20230206.xlsx')
 
 
 if __name__ == '__main__':
